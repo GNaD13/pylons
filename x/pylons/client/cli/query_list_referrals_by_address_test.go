@@ -14,10 +14,10 @@ import (
 )
 
 func settingPylonsAccount(ctx client.Context, t *testing.T, net *network.Network) (string, string, string) {
-	acc := util.GenerateAddressesInKeyring(ctx.Keyring, 1)
+	acc := util.GenerateAddressesInKeyring(ctx.Keyring, 2)
 	common := util.CommonArgs(acc[0].String(), net)
 
-	usernameReferral := "testReferralAddress"
+	usernameReferral := "testReferralUsername"
 	usernameTokenReferral := "testUsernameToken"
 	types.UpdateAppCheckFlagTest(types.FlagTrue)
 
@@ -30,8 +30,9 @@ func settingPylonsAccount(ctx client.Context, t *testing.T, net *network.Network
 
 	username := "testUsername"
 	usernameToken := "testUsernameToken"
-	referralAddress := "testReferralAddress"
+	referralAddress := acc[1].String()
 	types.UpdateAppCheckFlagTest(types.FlagTrue)
+	common = util.CommonArgs(acc[1].String(), net)
 
 	args = []string{}
 	args = append(args, username, usernameToken, referralAddress)
@@ -47,7 +48,7 @@ func settingPylonsAccount(ctx client.Context, t *testing.T, net *network.Network
 	_, err = clitestutil.ExecTestCLICmd(ctx, bank.NewSendTxCmd(), args)
 	require.NoError(t, err)
 
-	return acc[0].String(), username, referralAddress
+	return acc[1].String(), username, referralAddress
 }
 
 func TestCmdListReferralsByAddress(t *testing.T) {
