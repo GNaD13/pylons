@@ -71,6 +71,13 @@ func TestCmdListReferralsByAddress(t *testing.T) {
 			referral:  referral,
 			shouldErr: false,
 		},
+		{
+			desc:      "Invalid - referral address",
+			address:   address,
+			username:  username,
+			referral:  "Invalid",
+			shouldErr: true,
+		},
 	} {
 		tc := tc
 		t.Run(tc.desc, func(t *testing.T) {
