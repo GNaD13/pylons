@@ -32,6 +32,16 @@ const (
 	// Engineering Hot Wallet wallet address
 	EngineHotWal = "pylo1zag5vc7nfwa0scyrzfdsjj000xexfeyd956pqh"
 	//----------- FAKE ADDRESS---------------//
+
+	totalUbedrock           = 1_000_000_000_000_000 // 1 bedrock = 1_000_000 ubedrock
+	stakeholderDistribution = 150_000_000_000_000
+	incentivePools          = 150_000_000_000_000
+	foundationDiscretionary = 0
+	tkPreSale               = 20_000_000_000_000
+	tkCFSale                = 40_000_000_000_000
+	tkRegDSSale             = 20_000_000_000_000
+	companyRevenue          = 619_999_000_000_000
+	engineHotWal            = 1_000_000_000
 )
 
 var (
@@ -46,17 +56,17 @@ var (
 		EngineHotWal,
 	}
 
-	TotalUbedrock = math.NewIntFromUint64(1_000_000_000_000_000) // 1 bedrock = 1_000_000 ubedrock
+	TotalUbedrock = math.NewIntFromUint64(totalUbedrock)
 
 	UbedrockDistribute = map[string]math.Int{
-		Accounts[0]: math.NewIntFromUint64(150_000_000_000_000),
-		Accounts[1]: math.NewIntFromUint64(150_000_000_000_000),
-		Accounts[2]: math.ZeroInt(),
-		Accounts[3]: math.NewIntFromUint64(20_000_000_000_000),
-		Accounts[4]: math.NewIntFromUint64(40_000_000_000_000),
-		Accounts[5]: math.NewIntFromUint64(20_000_000_000_000),
-		Accounts[6]: math.NewIntFromUint64(619_999_000_000_000),
-		Accounts[7]: math.NewIntFromUint64(1_000_000_000),
+		Accounts[0]: math.NewIntFromUint64(stakeholderDistribution),
+		Accounts[1]: math.NewIntFromUint64(incentivePools),
+		Accounts[2]: math.NewIntFromUint64(foundationDiscretionary),
+		Accounts[3]: math.NewIntFromUint64(tkPreSale),
+		Accounts[4]: math.NewIntFromUint64(tkCFSale),
+		Accounts[5]: math.NewIntFromUint64(tkRegDSSale),
+		Accounts[6]: math.NewIntFromUint64(companyRevenue),
+		Accounts[7]: math.NewIntFromUint64(engineHotWal),
 	}
 	_ = Accounts
 	_ = TotalUbedrock
@@ -119,7 +129,7 @@ func BurnToken(ctx sdk.Context, denom string, accKeeper *authkeeper.AccountKeepe
 	}
 }
 
-// Mint ubedrock for 8 security account
+//Mint ubedrock for 8 security account
 func MintUbedrockForInitialAccount(ctx sdk.Context, bank *bankkeeper.BaseKeeper, staking *stakingkeeper.Keeper) {
 	// Mint coin for module
 	err := bank.MintCoins(ctx, types.PaymentsProcessorName, sdk.NewCoins(sdk.NewCoin(types.StakingCoinDenom, TotalUbedrock)))

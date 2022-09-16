@@ -12,14 +12,18 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
+const (
+	stakingCoinDenom = "ubedrock"
+	stripeCoinDenom  = "ustripeusd"
+	fundAmount       = 10_000_000
+)
+
 var (
-	stakingCoinDenom string    = "ubedrock"
-	stripeCoinDenom  string    = "ustripeusd"
 	defaultAcctFunds sdk.Coins = sdk.NewCoins(
-		sdk.NewCoin(stakingCoinDenom, sdk.NewInt(10_000_000)),
+		sdk.NewCoin(stakingCoinDenom, sdk.NewInt(fundAmount)),
 	)
 	defaultAcctFundsStripeCoin sdk.Coins = sdk.NewCoins(
-		sdk.NewCoin(stripeCoinDenom, sdk.NewInt(10_000_000)),
+		sdk.NewCoin(stripeCoinDenom, sdk.NewInt(fundAmount)),
 	)
 )
 
