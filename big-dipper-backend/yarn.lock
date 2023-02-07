@@ -224,15 +224,14 @@
   version "3.0.0"
   resolved "https://registry.npmjs.org/@google-cloud/promisify/-/promisify-3.0.0.tgz"
 
-"@google-cloud/storage@^6.1.0", "@google-cloud/storage@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-6.5.0.tgz#2e1ff633a0d960374730dcc56a1a601e5b7f776d"
+"@google-cloud/storage@^6.1.0", "@google-cloud/storage@^6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-6.9.2.tgz#f620c22aa817d3459035adeb23b89342ece60dc3"
   dependencies:
     "@google-cloud/paginator" "^3.0.7"
     "@google-cloud/projectify" "^3.0.0"
     "@google-cloud/promisify" "^3.0.0"
     abort-controller "^3.0.0"
-    arrify "^2.0.0"
     async-retry "^1.3.3"
     compressible "^2.0.12"
     duplexify "^4.0.0"
